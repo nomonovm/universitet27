@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universitet | Fan Qo'shish</title>
+</head>
+<body>
+<form method="POST">
+  {% csrf_token %}
+
+  <label>Nom:</label>
+  <input type="text" name="nom" required>
+
+  <label>Asosiy:</label>
+  <input type="checkbox" name="asosiy" required>
+
+  <label>Yo'nalish:</label>
+  <select name="yonalish" >
+    <option value=""></option>
+    {% for yonalish in yonalishlar %}
+        <option value="{{ yonalish.id }}">{{ yonalish.nom }}</option>
+    {% endfor %}
+  </select>
+
+  <br><br>
+  <button type="submit">Qo‘shish</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universitet | Fanlar</title>
+</head>
+<body>
+<h1>Fanlar ro'yxati</h1>
+<hr>
+<a href="/">Bosh sahifa</a>
+<hr>
+
+{% for fan in fanlar %}
+<p>{{ forloop.counter }}.
+    {{ fan.nom }}
+</p>
+{% endfor %}
+<hr>
+<a href="/fan_qoshish">
+    <button>fan qo'shish</button>
+</a>
+</body>
+</html>
