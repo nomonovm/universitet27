@@ -6,18 +6,21 @@
 </head>
 <body>
 <h1>Fanlar ro'yxati</h1>
-<hr>
 <a href="/">Bosh sahifa</a>
 <hr>
 
 {% for fan in fanlar %}
 <p>{{ forloop.counter }}.
     {{ fan.nom }}
+    <a href="/fanlar/{{ fan.id }}/tahrirlash/">
+        <button>Tahrirlash</button>
+    </a>
 </p>
 {% endfor %}
 <hr>
 <a href="/fan_qoshish">
-    <button>fan qo'shish</button>
+    <button>Fan qoshish</button>
 </a>
+<br><br>
 </body>
 </html>

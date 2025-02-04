@@ -18,17 +18,11 @@ class Fan(models.Model):
         return self.nom
 
 class Ustoz(models.Model):
-    DARAJA_CHOICES = [
-        ('Bakalavr', 'Bakalavr'),
-        ('Magistr', 'Magistr'),
-        ('PhD', 'PhD'),
-        ('DSc', 'DSc'),
-    ]
 
     ism = models.CharField(max_length=255)
     jins = models.CharField(max_length=10, choices=[('Erkak', 'Erkak'), ('Ayol', 'Ayol')])
     yosh = models.PositiveIntegerField()
-    daraja = models.CharField(max_length=50, choices=DARAJA_CHOICES)
+    daraja = models.CharField(max_length=50, choices=(('Bakalavr', 'Bakalavr'), ('Magistr', 'Magistr'), ('PhD', 'PhD'), ('DSc', 'DSc')))
     fan = models.ForeignKey(Fan, on_delete=models.CASCADE)
     class Meta:
         verbose_name_plural="Ustozlar"

@@ -21,11 +21,14 @@ from mainApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
-    path('fanlar/', fanlar_view, name='fanlar'),
-    path('yonalishlar/', yonalishlar_view, name='yonalishlar'),
-    path('ustozlar/', ustozlar_view, name='ustozlar'),
-    path('yonalish_qoshish/', yonalish_qoshish_view, name='yonalish_qoshish'),
-    path('fan_qoshish/', fan_qoshish_view, name='fan_qoshish'),
-    path('ustoz_qoshish', ustoz_qoshish_view, name='ustoz_qoshish'),
+    path('', home_view),
+    path('fanlar/', fanlar_view),
+    path('yonalishlar/', yonalishlar_view),
+    path('ustozlar/', ustozlar_view),
+    path('yonalish_qoshish/', yonalish_qoshish_view),
+    path('fan_qoshish/', fan_qoshish_view),
+    path('ustoz_qoshish/', ustoz_qoshish_view, name='ustoz_qoshish'),
+    path('fanlar/<int:pk>/tahrirlash/',fan_update_view),
+    path('yonalishlar/<int:pk>/tahrirlash/',yonalish_update_view),
+    path('ustozlar/<int:pk>/tahrirlash/',ustoz_update_view),
 ]

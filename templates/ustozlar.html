@@ -2,22 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Universitet | Ustozlarlar</title>
+    <title>Universitet | Ustozlar</title>
 </head>
 <body>
 <h1>Ustozlar ro'yxati</h1>
-<hr>
 <a href="/">Bosh sahifa</a>
 <hr>
 
 {% for ustoz in ustozlar %}
 <p>{{ forloop.counter }}.
     {{ ustoz.nom }}
+    <a href="/ustozlar/{{ ustoz.id }}/tahrirlash/">
+        <button>Tahrirlash</button>
+    </a>
 </p>
 {% endfor %}
+
 <hr>
 <a href="/ustoz_qoshish">
-    <button>ustoz qo'shish</button>
+    <button>Ustoz qo'shish</button>
 </a>
+<br><br>
 </body>
 </html>

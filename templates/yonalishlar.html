@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,20 @@
     <title>Universitet | Yo'nalishlar</title>
 </head>
 <body>
-<h1>Yo'nalishlar ro'yxati</h1>
-<a href="/">Bosh sahifa</a>
-<hr>
+    <h1>Yo'nalishlar ro'yxati</h1>
+    <a href="/">Bosh sahifa</a>
+    <hr>
 
-{% for yonalish in yonalishlar %}
-<p>{{ forloop.counter }}.
-    {{ yonalish.nom }}
-</p>
-{% endfor %}
-<a href="/yonalish_qoshish">
-    <button>Yo'nalish qo'shish</button>
-</a>
+    {% for yonalish in yonalishlar %}
+        <p>{{ forloop.counter }}.
+            {{ yonalish.nom }}
+            <a href="/yonalishlar/{{ yonalish.id }}/tahrirlash/">
+                <button>Tahrirlash</button>
+            </a>
+        </p>
+    {% endfor %}
+    <hr>
+<a href="/yonalish_qoshish"><button>Yo'nalish qo'shish</button></a>
+    <br><br>
 </body>
 </html>
