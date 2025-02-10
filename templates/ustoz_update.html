@@ -5,35 +5,33 @@
     <title>Universitet | Ustoz | Tahrirlash</title>
 </head>
 <body>
-<a href="/">Bosh sahifa</a>
-    <hr>
-<h1>{{ ustoz.nom }} ma'lumotini tahrirlash</h1>
-    <hr>
-    <form method="post">
+<h1>{{ ustoz.ism }} ma'lumotini tahrirlash</h1>
+<a href="/ustozlar/">Ortga</a>
+<hr>
+<form method="post">
     {% csrf_token %}
     <label>Ism:</label>
-        <input type="text" name="nom" value="{{ ustoz.nom }}" required>
+    <input type="text" name="ism" value="{{ ustoz.ism }}" required>
     <label>yosh:</label>
-        <input type="number" name="yosh" value="{{ ustoz.yosh }}" >
+    <input type="number" name="yosh" value="{{ ustoz.yosh }}">
     <label>Daraja:</label>
-        <select name="daraja">
-            <option>Bakalavr</option>
-            <option>Magistr</option>
-            <option>PhD</option>
-          <option>DSc</option>
-        </select>
+    <select name="daraja">
+        <option>Bakalavr</option>
+        <option>Magistr</option>
+        <option>PhD</option>
+        <option>DSc</option>
+    </select>
     <label>Fan:</label>
-        <select name="fan_id" required>
-            <option value="fan.id">{{ustoz.fan.nom}}</option>
-            {% for fan in fanlar %}
-                <option value="{{ fan.id }}">{{ fan.nom }}</option>
-            {% endfor %}
-        </select>
+    <select name="fan_id" required>
+        {% for fan in fanlar %}
+        <option value="{{ fan.id }}">{{ fan.nom }}</option>
+        {% endfor %}
+    </select>
     <label>Jins:</label>
-        <select name="jins" required>
-          <option >Erkak</option>
-          <option >Ayol</option>
-        </select>
+    <select name="jins" required>
+        <option>Erkak</option>
+        <option>Ayol</option>
+    </select>
     <button>Saqlash</button>
 </body>
 </html>

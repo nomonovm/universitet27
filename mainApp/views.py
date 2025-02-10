@@ -37,7 +37,7 @@ def yonalish_qoshish_view(request):
             aktiv=request.POST.get('aktiv') == 'on',
         )
         return redirect("/yonalishlar/")
-    return render(request, "yonalishlar_qoshish.html")
+    return render(request, "yonalish_qoshish.html")
 
 
 def fan_qoshish_view(request):
@@ -59,12 +59,12 @@ def fan_qoshish_view(request):
     context = {
         "yonalishlar": yonalishlar,
     }
-    return render(request, "fanlar_qoshish.html", context)
+    return render(request, "fan_qoshish.html", context)
 
 
 def ustoz_qoshish_view(request):
     if request.method == "POST":
-        nom = request.POST.get('nom')
+        ism = request.POST.get('ism')
         jins = request.POST.get('jins')
         yosh = request.POST.get('yosh')
         daraja = request.POST.get('daraja')
@@ -73,7 +73,7 @@ def ustoz_qoshish_view(request):
         if fan_id != 'None':
             fan = Fan.objects.get(id=fan_id)
         Ustoz.objects.create(
-            nom=nom,
+            ism=ism,
             jins=jins,
             yosh=yosh,
             daraja=daraja,
@@ -84,10 +84,10 @@ def ustoz_qoshish_view(request):
     context = {
         "fanlar": fanlar,
     }
-    return render(request, "ustozlar_qoshish.html", context)
+    return render(request, "ustoz_qoshish.html", context)
+
 
 def fan_update_view(request, pk):
-
     if request.method == "POST":
         if request.POST.get('yonalish_id') == '':
             yonalish_id = None
@@ -111,8 +111,10 @@ def fan_update_view(request, pk):
         "yonalishlar": yonalishlar,
     }
     return render(request, "fan_update.html", context)
+
+
 def yonalish_update_view(request, pk):
-    yonalish= Yonalish.objects.filter(pk=pk)
+    yonalish = Yonalish.objects.filter(pk=pk)
     if request.method == "POST":
         yonalish.update(
             nom=request.POST.get('nom'),
@@ -121,23 +123,24 @@ def yonalish_update_view(request, pk):
         return redirect("/yonalishlar/")
     yonalish = get_object_or_404(Yonalish, pk=pk)
     context = {
-        'yonalish':yonalish,
+        'yonalish': yonalish,
     }
     return render(request, 'yonalish_update.html', context)
+
+
 def ustoz_update_view(request, pk):
     ustoz = get_object_or_404(Ustoz, pk=pk)
 
     if request.method == "POST":
-        nom = request.POST.get("nom")
+        ism = request.POST.get("ism")
         yosh = request.POST.get("yosh")
         daraja = request.POST.get("daraja")
         jins = request.POST.get("jins")
         fan_id = request.POST.get("fan_id")
 
-
         fan = Fan.objects.get(id=fan_id) if fan_id != 'None' else None
 
-        ustoz.nom = nom
+        ustoz.ism = ism
         ustoz.yosh = yosh
         ustoz.daraja = daraja
         ustoz.jins = jins
